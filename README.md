@@ -11,52 +11,56 @@ This repository consists of completed config files to launch yolov10 for auto-an
   ```
   wsl --install
   ```
-  - It should automatically download a Ubuntu dist.  Create login/pass. And get to the console.
-  - Go to main folder
+- It should automatically download a Ubuntu dist.  Create login/pass. And get to the console.
+- Go to main folder
     ```
     cd
     ```
-  - Enter these commands one-by-one
+- Enter these commands one-by-one
     ```
-sudo apt-get update
-sudo apt-get --no-install-recommends install -y \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  gnupg-agent \
-  software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) \
-  stable"
-sudo apt-get update
-sudo apt-get --no-install-recommends install -y \
-  docker-ce docker-ce-cli containerd.io docker-compose-plugin
-```
-  - Give docker sudo perms.
+	sudo apt-get update
+    
+	sudo apt-get --no-install-recommends install -y \
+  	apt-transport-https \
+  	ca-certificates \
+  	curl \
+  	gnupg-agent \
+  	software-properties-common
+    
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo add-apt-repository \
+  	"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  	$(lsb_release -cs) \
+  	stable"
+    
+	sudo apt-get update
+    
+	sudo apt-get --no-install-recommends install -y \
+  	docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   ```
+- Give docker sudo perms.
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 ## CVAT Download
-  - Download cvat from their repository and go to the folder with console
+- Download cvat from their repository and go to the folder with console
 ```
 git clone https://github.com/cvat-ai/cvat
 cd cvat
 ```
-  - Install `nuclio`. To install a proper version for cvat. Go to the file inside the cvat folder `components/serverless/docker-compose.serverless.yml`. Find the proper version. For me it's 1.13.0*
+- Install `nuclio`. To install a proper version for cvat. Go to the file inside the cvat folder `components/serverless/docker-compose.serverless.yml`. Find the proper version. For me it's 1.13.0*
    
 	```
 	wget https://github.com/nuclio/nuclio/releases/download/<version>/nuctl-1.13.0-linux-amd64
 	```
-  - After downloading the nuclio, give it a proper permission and do a softlink.*
+- After downloading the nuclio, give it a proper permission and do a softlink.*
    
 	```
 	sudo chmod +x nuctl-1.13.0-linux-amd64
 	sudo ln -sf $(pwd)/nuctl-1.13.0-linux-amd64 /usr/local/bin/nuctl
 	```
-- Start CVAT together with the plugin use for AI automatic annotation assistant.
+ - Start CVAT together with the plugin use for AI automatic annotation assistant.
 	
 	```
 	docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml up -d
