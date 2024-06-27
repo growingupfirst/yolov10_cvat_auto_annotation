@@ -93,3 +93,4 @@ docker compose -f docker-compose.yml -f components/serverless/docker-compose.ser
 wsl.exe --shutdown
 ```
 3. Don't forget that you need at 3vram gpu to work.
+4. You should have the LATEST NVIDIA driver and CUDA driver that you can download here (https://www.nvidia.com/Download/index.aspx?lang=en-us) and here (https://developer.nvidia.com/cuda-downloads)
