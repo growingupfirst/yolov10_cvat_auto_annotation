@@ -1,10 +1,7 @@
-# yolov10_cvat_auto_annotation
+# Integrate YOLOv10 model into CVAT for automatic annotation running on GPU! 🚀
+
 This repository consists of completed config files to launch yolov10 for auto-annotation with a detailed guide. Have fun!
-
-# Integrate YOLOv10 model into CVAT for automatic annotation running on GPU!
-
-
-# Using Windows Desktop
+# Using Windows Desktop 🪟
 
 - Download Docker Desktop from official website (https://www.docker.com/products/docker-desktop/)
 - Install WSL using terminal or command line
@@ -43,7 +40,7 @@ This repository consists of completed config files to launch yolov10 for auto-an
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
-## CVAT Download
+## CVAT Download ⤵️
 - Download cvat from their repository and go to the folder with console
 ```
 git clone https://github.com/cvat-ai/cvat
@@ -69,7 +66,7 @@ cd cvat
 	```
 	docker exec -it cvat_server bash -ic 'python3 ~/manage.py createsuperuser'
 	```
-## Launching CVAT
+## Launching CVAT 🚀
 - Now go to the Google Chrome browser in your Windows. And write this in the website bar:
   ```
   localhost:8080
@@ -86,7 +83,7 @@ cd cvat
 - Copy all the code from `main.py` change the type of YOLO you want to deploy.
 - Click deploy and wait. After that refresh the Cvat tab in Chrome. And, hopefully, you will be able to see the Models Tab with yolov10 inside.
 
-# Note
+# Note 📓
 1. If you want to stop the server, write this in console:
 ```
 docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml down
